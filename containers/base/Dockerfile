@@ -15,7 +15,7 @@
 # We use different base images for GPU vs CPU Dockerfiles, so we expect
 # that the appropriate image is pulled and tagged locally.
 # CPU should use ubuntu:16.04
-# and GPU uses nvidia/cuda:9.1-cudnn7-devel-ubuntu16.04
+# and GPU uses nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
 FROM datalab-external-base-image
 MAINTAINER Google Cloud DataLab
 
@@ -121,7 +121,7 @@ RUN echo "deb-src http://ftp.us.debian.org/debian stretch main" >> /etc/apt/sour
         google-cloud-monitoring==0.28.0 \
         lime==0.1.1.23 \
         protobuf==3.6.1 \
-        tensorflow==1.8.0 && \
+        tensorflow==1.13.1 && \
     source deactivate && \
 # Clean up before setting up the Python3 env.
     conda clean -tipsy && \
@@ -234,7 +234,7 @@ RUN source activate $PYTHON_3_ENV && \
         google-cloud-monitoring==0.28.0 \
         lime==0.1.1.23 \
         protobuf==3.6.1 \
-        tensorflow==1.8.0
+        tensorflow==1.13.1
 
 ENV LANG en_US.UTF-8
 

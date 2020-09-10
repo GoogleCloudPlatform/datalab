@@ -71,6 +71,7 @@ tensorflow,https://raw.githubusercontent.com/tensorflow/tensorflow/master/LICENS
 tensorboard,https://raw.githubusercontent.com/tensorflow/tensorboard/master/LICENSE,Apache 2.0
 keras,https://raw.githubusercontent.com/keras-team/keras/master/LICENSE,MIT
 Keras-Applications,https://raw.githubusercontent.com/keras-team/keras-applications/master/LICENSE,MIT
+Keras-Preprocessing,https://raw.githubusercontent.com/keras-team/keras-preprocessing/master/LICENSE,MIT
 jupyter-tensorboard,https://raw.githubusercontent.com/lspvic/jupyter_tensorboard/master/LICENSE,MIT
 torch,https://raw.githubusercontent.com/pytorch/pytorch/master/LICENSE,BSD-3-clause
 torchvision,https://raw.githubusercontent.com/pytorch/vision/master/LICENSE,BSD-3-clause
@@ -168,6 +169,7 @@ scipy,https://raw.githubusercontent.com/scipy/scipy/master/LICENSE.txt,BSD
 tensorflow-tensorboard,https://raw.githubusercontent.com/tensorflow/tensorboard/master/LICENSE,Apache 2.0
 tensorflow-data-validation,https://raw.githubusercontent.com/tensorflow/data-validation/master/LICENSE,Apache 2.0
 tensorflow-metadata,https://raw.githubusercontent.com/tensorflow/metadata/master/LICENSE,Apache 2.0
+tensorflow-estimator,https://raw.githubusercontent.com/tensorflow/estimator/master/LICENSE,Apache 2.0
 defusedxml,https://raw.githubusercontent.com/tiran/defusedxml/master/LICENSE,PSF
 conda,https://raw.githubusercontent.com/conda/conda/master/LICENSE.txt,3-Clause BSD
 packaging,https://raw.githubusercontent.com/pypa/packaging/master/LICENSE,BSD or Apache 2.0

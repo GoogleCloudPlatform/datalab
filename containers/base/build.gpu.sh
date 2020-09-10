@@ -32,11 +32,11 @@ fi
 
 trap 'rm -rf pydatalab' exit
 
-docker pull nvidia/cuda:9.0-cudnn7-devel-ubuntu16.04
+docker pull nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
 # Docker tag flags changed in an incompatible way between versions.
 # The Datalab Jenkins build still uses the old one, so try it both ways.
-if ! $(docker tag -f nvidia/cuda:9.0-cudnn7-devel-ubuntu16.04 datalab-external-base-image 2> /dev/null); then
-  docker tag nvidia/cuda:9.0-cudnn7-devel-ubuntu16.04 datalab-external-base-image
+if ! $(docker tag -f nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04 datalab-external-base-image 2> /dev/null); then
+  docker tag nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04 datalab-external-base-image
 fi
 docker build ${DOCKER_BUILD_ARGS} -t datalab-core-gpu .
 docker build ${DOCKER_BUILD_ARGS} -f Dockerfile.gpu -t datalab-base-gpu .

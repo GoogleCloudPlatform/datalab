@@ -81,10 +81,10 @@ steps:
 
 ## Second, we build the GPU base image
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['pull', 'nvidia/cuda:9.0-cudnn7-devel-ubuntu16.04']
+  args: ['pull', 'nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04']
   id:   'pullNvidiaUbuntu'
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['tag', 'nvidia/cuda:9.0-cudnn7-devel-ubuntu16.04', 'datalab-external-base-image']
+  args: ['tag', 'nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04', 'datalab-external-base-image']
   id:   'tagNvidiaUbuntu'
   waitFor: ['buildBase', 'pullNvidiaUbuntu']
 - name: 'gcr.io/cloud-builders/docker'
