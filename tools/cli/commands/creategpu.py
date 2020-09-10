@@ -75,7 +75,7 @@ write_files:
   permissions: 0755
   owner: root
   content: |
-    NVIDIA_DRIVER_VERSION=390.46
+    NVIDIA_DRIVER_VERSION=418.67
     COS_NVIDIA_INSTALLER_CONTAINER=gcr.io/cos-cloud/cos-gpu-installer:latest
     NVIDIA_INSTALL_DIR_HOST=/var/lib/nvidia
     NVIDIA_INSTALL_DIR_CONTAINER=/usr/local/nvidia
@@ -96,8 +96,9 @@ write_files:
     User=root
     Type=oneshot
     RemainAfterExit=true
+    Environment="HOME=/home/datalab"
     EnvironmentFile=/etc/nvidia-installer-env
-    ExecStartPre=docker-credential-gcr configure-docker
+    ExecStartPre=/usr/bin/docker-credential-gcr configure-docker
     ExecStartPre=/bin/bash -c 'mkdir -p "${{NVIDIA_INSTALL_DIR_HOST}}" && \
         mount --bind "${{NVIDIA_INSTALL_DIR_HOST}}" \
         "${{NVIDIA_INSTALL_DIR_HOST}}" && \
@@ -124,8 +125,9 @@ write_files:
 
     [Service]
     Environment="HOME=/home/datalab"
-    ExecStartPre=docker-credential-gcr configure-docker
-    ExecStart=/usr/bin/docker run --restart always \
+    ExecStartPre=/usr/bin/docker-credential-gcr configure-docker
+    ExecStart=/usr/bin/docker run \
+       --name=datalab \
        -p '127.0.0.1:8080:8080' \
        -v /mnt/disks/datalab-pd/content:/content \
        -v /mnt/disks/datalab-pd/tmp:/tmp \
@@ -144,6 +146,8 @@ write_files:
        --env='DATALAB_GIT_AUTHOR={3}' \
        --env='DATALAB_INITIAL_USER_SETTINGS={4}' \
        {0} -c /datalab/run.sh
+    ExecStop=-/usr/bin/docker stop datalab
+    ExecStopPost=-/usr/bin/docker rm -f datalab
     Restart=always
     RestartSec=1
 

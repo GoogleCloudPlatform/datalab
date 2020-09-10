@@ -296,6 +296,8 @@ write_files:
        --env='DATALAB_GIT_AUTHOR={3}' \
        --env='DATALAB_INITIAL_USER_SETTINGS={4}' \
        {0}
+    ExecStop=-/usr/bin/docker stop datalab
+    ExecStopPost=-/usr/bin/docker rm -f datalab
     Restart=always
     RestartSec=1
 
