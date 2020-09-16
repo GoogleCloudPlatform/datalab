@@ -66,7 +66,6 @@ write_files:
     User=root
     Type=oneshot
     RemainAfterExit=true
-    ExecStartPre=docker-credential-gcr configure-docker
     ExecStart=/bin/bash -c 'while [ ! -e /mnt/disks/datalab-pd/tmp ]; do \
         sleep 1; \
         done'
@@ -75,7 +74,7 @@ write_files:
   permissions: 0755
   owner: root
   content: |
-    NVIDIA_DRIVER_VERSION=390.46
+    NVIDIA_DRIVER_VERSION=418.67
     COS_NVIDIA_INSTALLER_CONTAINER=gcr.io/cos-cloud/cos-gpu-installer:latest
     NVIDIA_INSTALL_DIR_HOST=/var/lib/nvidia
     NVIDIA_INSTALL_DIR_CONTAINER=/usr/local/nvidia
@@ -94,6 +93,7 @@ write_files:
 
     [Service]
     User=root
+    Environment="HOME=/home/datalab"
     Type=oneshot
     RemainAfterExit=true
     EnvironmentFile=/etc/nvidia-installer-env
